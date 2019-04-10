@@ -1,4 +1,4 @@
-package com.example.test_project;
+package com.example.infinite_scroll;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

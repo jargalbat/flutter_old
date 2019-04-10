@@ -1,6 +1,6 @@
-# test_project
+# infinite_scroll
 
-A new Flutter application.
+Infinite scroll
 
 ## Getting Started
 
