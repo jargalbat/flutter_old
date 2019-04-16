@@ -44,7 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
           return;
         },
         child: ListView(
-          //Each article will become (=>) its own widget. article => new Text("AA"),
+          //Each article will become (=>) its own widget.
+//          children: _articles.map(article => new Text("AA")).toList(),
           children: _articles.map(_buildItem).toList(),
         ),
       ),
@@ -53,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildItem(Article article) {
     return new Padding(
+        key: Key(article.text),
         padding: const EdgeInsets.all(16.0),
         child: new ExpansionTile(
           title: new Text(
@@ -79,21 +81,5 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ));
-
-//    return new Padding(
-//        padding: const EdgeInsets.all(16.0),
-//        child: new ListTile(
-//          title: new Text(
-//            article.text,
-//            style: new TextStyle(fontSize: 24.0),
-//          ),
-//          subtitle: new Text("${article.commentsCount} comments"),
-//          onTap: () async {
-//            final fakeUrl = "http://${article.domain}";
-//            if (await canLaunch(fakeUrl)) {
-//              await launch(fakeUrl);
-//            }
-//          },
-//        ));
   }
 }
