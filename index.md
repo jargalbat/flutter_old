@@ -4,18 +4,33 @@ layout: default
 
 # Flutter animation
 Flutter-ийн анимэйшн систем нь `Animation` обьектүүд дээр тулгуурладаг.
-
-#### Animation&lt;double>&gt;
-Animation обьект нь дэлгэцтэй холбоо хамааралгүй ажилладаг. Animation абстракт класс нь одоогийн утга, дууссан, хаагдсан төлөвийг л ойлгодог. Хамгийн түгээмэл ашиглагддаг анимэйшны нэг төрөл нь `Animation<double>`. Animation обьект нь тодорхой хугацаанд 2 утгын хооронд дараалсан тоонуудыг үүсгэнэ. Animation обьектийн гаралт нь шугаман, муруй, тодорхой алхамтай функц, мөн түүнчлэн хөгжүүлэгчийн өөрөө тодорхойлсон ямар нэг дүрслэл байж болно. Animation обьектийг хэрхэн удирдаж байгаагаас хамаарч хөрвөх эсвэл чиглэл нь өөрчлөгдөнө.
-
-
+#### Animation&lt;double&gt;
+Animation обьект нь onscreen буюу дэлгэцтэй холбоо хамааралгүйгээр, тусдаа бие даан ажилладаг. Тодруулбал animation обьект болон render хийх, build функцүүдийн хооронд огт хамаарал байхгүй. Animation абстракт класс нь одоогийн утга, дууссан, хаагдсан төлөвийг л ойлгодог. Хамгийн түгээмэл ашиглагддаг анимэйшны нэг төрөл нь `Animation<double>`. Animation обьект нь тодорхой хугацаанд 2 утгын хооронд дараалсан тоонуудыг үүсгэнэ. Animation обьектийн гаралт нь шугаман, муруй, тодорхой алхамтай функц, мөн түүнчлэн хөгжүүлэгчийн өөрөө тодорхойлсон ямар нэг дүрслэл байж болно. Animation обьектийг хэрхэн удирдаж байгаагаас хамаарч хөрвөх, чиглэл нь өөрчлөгдөх зэрэг үйлдэл хийгдэнэ. Animation обьект өөрийн гэсэн state-тэй байх бөгөөд `.value`-д яг одоогийн state хадгалагдана.
+Animation нь double-аас гадна өнгө `Animation<Color>`, хэмжээ `Animation<Size>` төрөлтэй байж болно.
+#### Curved­Animation
+Муруйн дагуу өөрчлөгдөх анимэйшний алхмуудыг CurvedAnimation-ээр тодорхойлно. 
 ```dart
-Stream<int> countStream(int max) async* {
-    for (int i = 0; i < max; i++) {
-        yield i;
-    }
+animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+```
+Curve class-ийг ашиглан дурын муруйг үүсгэж болно.
+```dart
+import 'dart:math';
+
+class ShakeCurve extends Curve {
+  @override
+  double transform(double t) => sin(t * pi * 2);
 }
 ```
+CurvedAnimation, AnimationController нь хоёулаа `Animation<double>` төрөлтэй.
+#### AnimationController
+
+
+
+
+
+
+
+
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
