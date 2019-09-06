@@ -1,6 +1,21 @@
 ---
 layout: default
 ---
+```
+Stream<int> countStream(int max) async* {
+    for (int i = 0; i < max; i++) {
+        yield i;
+    }
+}
+```
+
+```dart
+Stream<int> countStream(int max) async* {
+    for (int i = 0; i < max; i++) {
+        yield i;
+    }
+}
+```
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
