@@ -2,6 +2,12 @@
 layout: default
 ---
 
+# Flutter animation
+Flutter-ийн animation систем нь Animation обьектүүд дээр тулгуурладаг.
+
+#### Animation<double>
+Animation обьект нь дэлгэцтэй холбоо хамааралгүй ажилладаг. Animation абстракт класс нь одоогийн утга, дууссан, хаагдсан төлөвийг л ойлгодог. Хамгийн түгээмэл ашиглагддаг анимэйшны нэг төрөл нь **Animation<double>**.
+
 ```dart
 Stream<int> countStream(int max) async* {
     for (int i = 0; i < max; i++) {
