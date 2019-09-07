@@ -4,9 +4,9 @@ layout: default
 
 # Flutter animation
 Flutter-ийн анимэйшн систем нь `Animation` обьектүүд дээр тулгуурладаг.
-#### Animation&lt;double&gt;
+### Animation&lt;double&gt;
 Animation обьект нь onscreen буюу дэлгэцтэй холбоо хамааралгүйгээр, тусдаа бие даан ажилладаг. Тодруулбал animation обьект болон render хийх, build функцүүдийн хооронд огт холбоо хамаарал байхгүй. Animation абстракт класс нь одоогийн утга, дууссан (completed), хаагдсан (dismissed) state-үүдтэй харьцаж ажилладаг. Хамгийн түгээмэл ашиглагддаг анимэйшны төрө бол `Animation<double>` юм. Animation обьект нь тодорхой хугацаанд 2 утгын хооронд дараалсан тоонуудыг үүсгэдэг. Гаралт нь шугаман, муруй, тодорхой алхамтай функц, мөн шинээр тодорхойлсон ямар нэг дүрслэл байж болно. Animation обьектийг хэрхэн удирдаж байгаагаас хамаарч чиглэл нь өөрчлөгддөг. Animation обьект өөрийн гэсэн state-тэй бөгөөд `.value`-д яг одоогийн state хадгалагдана. Animation нь double-аас гадна өнгө `Animation<Color>`, хэмжээ `Animation<Size>` төрлүүдтэй байдаг.
-#### Curved­Animation
+### Curved­Animation
 Муруйн дагуу өөрчлөгдөх анимэйшний алхмуудыг CurvedAnimation-ээр тодорхойлно. 
 ```dart
 animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
@@ -21,8 +21,35 @@ class ShakeCurve extends Curve {
 }
 ```
 CurvedAnimation болон AnimationController-ууд нь `Animation<double>` төрөлтэй.
-#### AnimationController
-AnimationController нь төхөөрөмж шинэ frame дүрслэх үед тухайн утгыг үүсгэж өгөх зориулалттай Animation обьект юм.
+### AnimationController
+AnimationController нь төхөөрөмж шинэ frame дүрслэх үед тухайн утгыг үүсгэж өгөх зориулалттай Animation обьект юм. AnimationController нь `Animation<double>` дээр суурилсан бөгөөд өгөгдсөн хугацааны дотор 0.0-1.0-ийн хооронд тоонуудыг үүсгэнэ (зарим анимэйшн 0.0-1.0-ээс өөр утга авах боломжтой).
+```dart
+controller = AnimationController(duration: const Duration(seconds: 2), vsync: this);
+```
+Анимэйшнийг .forward() методоор эхлүүлнэ. Секунтэд 60 тоо үүсгэнэ. Тоо үүсэх бүрт Animation обьект Listener обьектыг дуудна. The presence of vsync prevents offscreen animations from consuming unnecessary resources. You can use your stateful object as the vsync by adding SingleTickerProviderStateMixin to the class definition.
+### Tween
+AnimationController обьектын range 0.0-1.0 байдаг. Tween -200.0-0.0-ийн хооронд утга авах боломжтой.
+```dart
+tween = Tween<double>(begin: -200, end: 0);
+```
+Tween `Animatable<T>`-ээс удамшдаг бөгөөд заавал тоон утга үүсгэдэг байх албагүй. Жишээ нь ColorTween-ээр хоёр өнгөний хооронд 
+```dart
+colorTween = ColorTween(begin: Colors.transparent, end: Colors.black54);
+```
+#### Tween.animate
+```dart
+AnimationController controller = AnimationController(
+    duration: const Duration(milliseconds: 500), vsync: this);
+final Animation curve =
+    CurvedAnimation(parent: controller, curve: Curves.easeOut);
+Animation<int> alpha = IntTween(begin: 0, end: 255).animate(curve);
+```
+### Animation notifications
+
+
+
+
+
 
 
 
